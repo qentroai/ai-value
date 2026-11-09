@@ -245,17 +245,17 @@ select:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
     <h2 id="h4x"><span class="num" aria-hidden="true">4</span>What exactly is getting in the way?</h2>
     <p class="step-locked" id="lock4">Pick an area in step 3 first.</p>
     <div class="choices" role="radiogroup" aria-labelledby="h4x" id="problems"></div>
-    <div id="otherbox" hidden><label class="small" for="other">Describe it in a few words</label><input type="text" id="other" maxlength="120" placeholder="e.g. Rescheduling jobs when the weather changes"></div>
+    <div id="otherbox" hidden><label class="small" for="othercategory">Which type of problem is closest?</label><select id="othercategory"><option value="">Choose a category</option><option value="prospecting">Finding potential customers</option><option value="conversion">Turning interested prospects into paying customers</option><option value="followup">Following up with existing leads</option><option value="content">Marketing / communications</option><option value="proposals">Quotes / proposals</option><option value="documents">Documents / knowledge</option><option value="workflow">Repetitive workflow / scheduling</option><option value="quality">Errors / quality</option><option value="analysis">Reporting / analysis</option><option value="other">Other / unsure</option></select><label class="small" for="other">Describe it in a few words</label><input type="text" id="other" maxlength="120" placeholder="e.g. Rescheduling jobs when the weather changes"></div>
   </section>
 
   <section class="card" aria-labelledby="h5x">
     <h2 id="h5x"><span class="num" aria-hidden="true">5</span>What is it worth?</h2>
     <p class="step-locked" id="lock5">Pick a goal in step 2 first. A rough guess is fine.</p>
     <div id="worth" hidden>
-      <div class="worthrow">
+      <p class="sub" id="worthhint">Use your own numbers where possible; leave blank if unknown. The estimate is a scenario, not a forecast.</p><div class="worthrow">
         <div><label class="small" for="w1" id="w1l">How often</label><input type="number" id="w1" min="0" step="any" inputmode="decimal"></div>
         <div><label class="small" for="w2" id="w2l">Worth each time ($)</label><input type="number" id="w2" min="0" step="any" inputmode="decimal"></div>
-        <div><label class="small" for="imp">How much could you improve it?</label>
+        <div><label class="small" for="imp">Illustrative improvement scenario</label>
           <select id="imp"><option value="10">A little (10%)</option><option value="25" selected>Some (25%)</option><option value="50">A lot (50%)</option></select></div>
       </div>
       <div class="estimate" id="estimate" style="margin-top:12px">Your estimate appears here.</div>
@@ -263,8 +263,8 @@ select:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
   </section>
 
   <section class="card" aria-labelledby="h6x">
-    <h2 id="h6x"><span class="num" aria-hidden="true">6</span>Is AI the right tool for it?</h2>
-    <p class="sub">Not every valuable problem needs AI. Three quick checks.</p>
+    <h2 id="h6x"><span class="num" aria-hidden="true">6</span>Is AI the right solution?</h2>
+    <p class="sub">Three quick checks to see whether AI adds value, whether existing tools are enough, and whether a first test is practical.</p>
     <div class="fitq" id="fitq"></div>
   </section>
 
@@ -277,13 +277,13 @@ select:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
       <button type="button" class="ghost" id="example">Fill with an example</button>
     </div>
     <div id="shortwrap" hidden>
-      <h3 style="margin:6px 0 0;font-family:var(--font-display);font-size:17px">Your shortlist, ranked by value and AI fit</h3>
+      <h3 style="margin:6px 0 0;font-family:var(--font-display);font-size:17px">Your shortlist: ranked by AI fit, then estimated value</h3>
       <div class="list" id="short"></div>
     </div>
     <p class="note">A rough estimate to test, not a forecast. Staff time saved is capacity, not cash, until you use it. Revenue is not profit. Check the numbers before you invest.</p>
     <div class="savebar">
-      <div class="actions"><button type="button" class="primary" id="save">Download my results (PDF)</button></div>
-      <p class="sub" style="margin:0;font-size:13.5px">When you download, your results are also shared with Qentro so we can follow up.</p>
+      <div class="actions"><button type="button" class="primary" id="save">Download my results (PDF)</button><button type="button" class="ghost" id="share">Share my assessment with Qentro</button></div>
+      <p class="sub" style="margin:0;font-size:13.5px">Your PDF download is private. Sharing your assessment with Qentro is optional.</p>
       
       <div class="status" id="savestatus" role="status"></div>
     </div>
@@ -305,12 +305,12 @@ select:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
   <section class="card" aria-labelledby="h9x">
     <h2 id="h9x">Turn it into a plan</h2>
     <p class="sub">Bring your top opportunity to a free 15 minute AI Office Hours session, or to Session 3 on Nov 23, where we turn one opportunity into a working AI solution.</p>
-    <div class="tools"><a class="txt" href="https://calendar.app.google/iVMhrh3wYaQJajhU8" target="_blank" rel="noopener">Book a free Office Hours slot</a></div>
+    <div class="tools"><a class="txt" href="https://calendar.app.google/to16xPozYF3HVWaz5" target="_blank" rel="noopener">Join Private AI Office Hours</a></div>
   </section>
 
   <footer class="foot">
     <div>Qentro LLC · <a href="https://qentrotech.com" target="_blank" rel="noopener">qentrotech.com</a> · xyang@qentrotech.com</div>
-    <div>Your answers stay in your browser until you download. Keep customer names and confidential details out.</div>
+    <div>Your answers remain in this browser unless you choose to share them with Qentro. Avoid confidential customer details.</div>
     
   </footer>
 </div>
@@ -319,12 +319,12 @@ select:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 <script>
 const HOSTED = true;
 // Hosted site only: paste your Google Apps Script web app URL here (see SETUP.md).
-const ENDPOINT = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE';
-const BOOK_URL = 'https://calendar.app.google/iVMhrh3wYaQJajhU8';
+const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxfoK69wLVuk8R4psp4GayBp4eNRHgzSrMBxk6iCsCBDNtK77RwNQL6AdCZHOrpfSxu/exec';
+const BOOK_URL = 'https://calendar.app.google/to16xPozYF3HVWaz5';
 
 (function () {
   const $ = (id) => document.getElementById(id);
-  const KEY = 'qentro-ai-value-v5';
+  const KEY = 'qentro-ai-value-v24';
   const money = (n) => '$' + Math.round(n).toLocaleString('en-US');
 
   // Step 2 (slide 7): each goal decides how value is measured.
@@ -345,10 +345,12 @@ const BOOK_URL = 'https://calendar.app.google/iVMhrh3wYaQJajhU8';
   // Step 3 (slide 8) and step 4: common problems per area, with what AI could do.
   const AREAS = {
     sales: { t: 'Sales & Marketing', d: 'Finding customers, converting leads, growing revenue', p: [
+      ['Finding potential customers', 'AI can support research on publicly available prospect information and help prepare outreach for your review'],
+      ['Turning interested prospects into paying customers', 'AI can help analyze sales notes, draft relevant follow-ups and proposals, and summarize objections'],
       ['Slow or missed follow-up on leads', 'AI drafts first replies and follow-ups for you to approve'],
       ['Writing quotes and proposals', 'AI drafts quotes and proposals from your templates and past work'],
       ['Creating marketing content', 'AI drafts posts, emails and web copy in your voice'],
-      ['Finding and researching prospects', 'AI researches and lists prospects that fit your ideal customer']] },
+      ] },
     cx: { t: 'Customer Experience', d: 'Responding to customers, improving service, building loyalty', p: [
       ['Answering the same questions again and again', 'AI drafts answers from your FAQs and policies'],
       ['Slow replies to customer requests', 'AI sorts incoming requests and drafts replies'],
@@ -375,12 +377,12 @@ const BOOK_URL = 'https://calendar.app.google/iVMhrh3wYaQJajhU8';
   const OTHER = 'Something else';
   // Step 6: three checks, from the deck's "not every valuable opportunity needs AI".
   const FIT = [
-    ['f1', 'Is it repetitive work with text, documents, messages or data?', 'AI is strongest at reading, writing, sorting and summarizing.'],
-    ['f2', 'Is the information it needs available digitally?', 'Email, files, spreadsheets or software, not only in someone’s head.'],
-    ['f3', 'Can a person check the result before it matters?', 'Before it reaches a customer, the books or a decision.']
+    ['f1', 'Does this work require understanding or generating information rather than just following fixed steps?', 'For example, interpreting requests, analyzing documents, or drafting tailored responses.'],
+    ['f2', 'Can your existing business tools already handle this work?', 'For example, features in your accounting, scheduling, or customer management software. Answer Yes only if they already do it well; that points to using them before AI.'],
+    ['f3', 'Is the information needed to perform this work available digitally?', 'For example, in documents, spreadsheets, emails, or business software.']
   ];
   const EXAMPLE = { bname: 'Summit Ledger Bookkeeping (example)', industry: 'Professional services', team: '2 to 5 people',
-    goal: 'efficiency', area: 'ops', problem: 'Chasing documents and information', other: '', w1: '10', w2: '38', imp: '25', f1: 'yes', f2: 'yes', f3: 'yes' };
+    goal: 'efficiency', area: 'ops', problem: 'Chasing documents and information', other: '', w1: '10', w2: '38', imp: '25', f1: 'yes', f2: 'no', f3: 'yes' };
 
   // ---------- build the form ----------
   const radio = (name, value, title, desc) => `<label class="choice"><input type="radio" name="${name}" id="${name}_${value.replace(/\W+/g, '_')}" value="${value}"><span class="box"><b>${title}</b>${desc ? `<span class="d">${desc}</span>` : ''}</span></label>`;
@@ -396,7 +398,7 @@ const BOOK_URL = 'https://calendar.app.google/iVMhrh3wYaQJajhU8';
     if (keep) document.querySelectorAll('input[name="problem"]').forEach(e => e.checked = e.value === keep);
   }
   const pick = (n) => { const e = document.querySelector(`input[name="${n}"]:checked`); return e ? e.value : ''; };
-  const TXT = ['bname', 'industry', 'team', 'other', 'w1', 'w2', 'imp'].concat(HOSTED ? ['cname', 'cemail'] : []);
+  const TXT = ['bname', 'industry', 'team', 'other', 'othercategory', 'w1', 'w2', 'imp'].concat(HOSTED ? ['cname', 'cemail'] : []);
   function read() {
     const d = {}; TXT.forEach(i => d[i] = $(i).value.trim());
     ['goal', 'area', 'problem', 'f1', 'f2', 'f3'].forEach(n => d[n] = pick(n));
@@ -406,32 +408,75 @@ const BOOK_URL = 'https://calendar.app.google/iVMhrh3wYaQJajhU8';
     TXT.forEach(i => { if (d[i] !== undefined) $(i).value = d[i]; });
     if (!d.imp) $('imp').value = '25';
     ['goal', 'area', 'f1', 'f2', 'f3'].forEach(n => document.querySelectorAll(`input[name="${n}"]`).forEach(e => e.checked = e.value === d[n]));
-    renderProblems(d.area, d.problem);
+    renderProblems(d.area, d.problem);$('imp').dataset.mode='';$('imp').dataset.pending=d.imp||'';
   }
 
-  // ---------- logic ----------
+  // ---------- evidence-aware, rules-based assessment (no LLM) ----------
+  const PROFILES = {
+    prospecting: { title:'Find qualified prospects', approach:'AI-assisted research plus a repeatable outreach process', why:'Finding new customers involves defining a target market, identifying qualified companies, and reaching the right decision-makers. AI may accelerate research and drafting; it cannot guarantee lead quality or replies.', ai:'Use AI to research public company information, summarize relevant business signals, and draft outreach for human review.', simpler:'Start with referrals, your Chamber network, a clear ideal customer profile, and a simple prospect tracker.', check:'Define a qualified prospect and confirm you have a lawful, reliable source of prospect information.', metric:'Qualified prospects found, outreach responses, discovery meetings, and research time.', pilot:'Week 1: define an ideal customer profile and record the current number of qualified prospects and research time. Week 2: research a small batch of prospects with AI assistance, verify every fact, send approved personalized outreach, and track responses and time. Sales may take longer than two weeks.', model:'leads', task:'mixed' },
+    conversion: { title:'Improve prospect-to-customer conversion', approach:'Sales process improvement, with targeted AI assistance', why:'Conversion can depend on prospect fit, response speed, trust, pricing, follow-up, and proposal quality. The form cannot identify the actual bottleneck without funnel records.', ai:'Summarize discovery notes, draft tailored follow-ups, analyze recurring objections, and prepare proposal outlines for review.', simpler:'Track each lead stage, set follow-up reminders, and improve discovery questions and proposal clarity.', check:'Review how many qualified prospects move from inquiry to meeting, proposal, and sale; identify where they drop out.', metric:'Qualified leads, meetings, proposals, win rate, sales cycle length.', pilot:'Week 1: review recent prospects and record funnel stages and follow-up delays. Week 2: use a structured follow-up checklist and AI-assisted drafts for a small group, track replies and meeting bookings, and compare effort. Do not infer conversion lift from a two-week sample.', model:'conversion', task:'mixed' },
+    followup: { title:'Improve lead follow-up', approach:'Existing CRM reminders first; AI for tailored replies', why:'Basic reminders are predictable and may already exist in your CRM. AI can help when responses require interpretation or personalization.', ai:'Draft tailored responses from approved lead notes for a person to check.', simpler:'Configure CRM reminders, ownership, and response-time targets.', check:'Check current CRM capabilities and how many leads receive late or no follow-up.', metric:'Response time, overdue follow-ups, reply rate.', pilot:'Week 1: measure missed follow-ups and response times. Week 2: use existing reminders and test approved AI drafts for unusual replies; compare completion, quality and effort.', model:'missed', task:'automation' },
+    content: { title:'Create marketing content', approach:'AI-assisted drafting with human review', why:'Drafting and adapting text can suit an LLM, but content quality and business outcomes need human validation.', ai:'Draft and adapt content using your approved brand information and examples.', simpler:'Use a repeatable editorial calendar, templates, and reuse existing content.', check:'Identify your audience, content goals, approval process, and how you measure engagement.', metric:'Hours per piece, publishing consistency, qualified inquiries.', pilot:'Week 1: measure time to prepare content and engagement baseline. Week 2: draft several pieces with AI, review accuracy and voice, and compare effort. Do not claim new customers from short-term engagement alone.', model:'hours', task:'language' },
+    proposals: { title:'Prepare quotes and proposals', approach:'Templates and AI-assisted drafting', why:'Reusable structure can be handled with templates; AI may help tailor narratives to customer needs.', ai:'Draft proposal sections from approved notes, service descriptions and pricing rules for review.', simpler:'Standardize pricing, scope and proposal templates.', check:'Confirm pricing and scope approval requirements; never let AI invent commitments.', metric:'Time per proposal, revisions, errors, proposal-to-win rate.', pilot:'Week 1: time several proposals and record corrections. Week 2: use a standard template and AI-assisted draft on a small sample, verifying all numbers and terms.', model:'hours', task:'language' },
+    documents: { title:'Improve document and knowledge work', approach:'AI-assisted search or document processing', why:'AI can help with unstructured information, provided the source material is accessible and answers can be checked.', ai:'Summarize approved documents, find relevant passages, or draft structured checklists.', simpler:'Organize files, improve naming, and create standard checklists.', check:'Confirm source permissions, accuracy requirements, and human review.', metric:'Time to find information, answer accuracy, review effort.', pilot:'Week 1: measure retrieval time on representative questions. Week 2: test approved documents and verify each answer against its source; compare accuracy and time.', model:'hours', task:'language' },
+    workflow: { title:'Improve a repetitive workflow', approach:'Process cleanup and ordinary automation first', why:'Predictable steps usually do not require an LLM; AI may help only where exceptions involve interpreting unstructured information.', ai:'Help classify unusual requests or draft exception responses, with review.', simpler:'Simplify steps and use built-in software automation or checklists.', check:'Map the workflow and inspect existing tools before introducing AI.', metric:'Hours per week, cycle time, exception rate.', pilot:'Week 1: record steps, time and exceptions. Week 2: remove one bottleneck or test a built-in automation; measure changes and errors.', model:'hours', task:'automation' },
+    quality: { title:'Reduce errors and rework', approach:'Checklists, validation rules, then targeted AI review', why:'Known errors may be caught by deterministic checks. AI may assist with ambiguous or narrative content but requires validation.', ai:'Flag potential inconsistencies in approved material for human review.', simpler:'Add required fields, validation rules and quality checklists.', check:'Identify common error types and their actual correction cost.', metric:'Errors per month, rework time, false positives.', pilot:'Week 1: count errors and rework time. Week 2: test a checklist or rule-based validation, and AI review only where needed; compare false alarms and missed errors.', model:'errors', task:'mixed' },
+    analysis: { title:'Improve reporting and decisions', approach:'Reliable reporting first; AI for interpretation', why:'Data quality and agreed definitions matter more than generating a polished summary.', ai:'Explain trends and draft commentary on validated reports, with cited inputs.', simpler:'Create a consistent spreadsheet or dashboard with clear metrics.', check:'Confirm data definitions, completeness, and who validates decisions.', metric:'Reporting hours, data errors, decision turnaround.', pilot:'Week 1: measure reporting effort and reconcile source numbers. Week 2: build a repeatable report and test AI-generated explanations against the source.', model:'hours', task:'mixed' },
+    other: { title:'Investigate the business problem', approach:'Clarify workflow before choosing technology', why:'A short free-text description is not enough to establish the best solution or reliable financial value.', ai:'AI may assist with research, drafting, analysis or classification after the actual task is clarified.', simpler:'Map the process, define the bottleneck and check current software.', check:'Describe the work step by step, the desired outcome, and available data.', metric:'Baseline time, volume, quality, or sales funnel measures appropriate to the problem.', pilot:'Week 1: document the current process and baseline. Week 2: test one low-risk change, measure the same outcomes, and decide whether AI is needed.', model:'hours', task:'unknown' }
+  };
+  const PROFILE_MAP = {
+    'Finding potential customers':'prospecting', 'Finding and researching prospects':'prospecting', 'Turning interested prospects into paying customers':'conversion',
+    'Slow or missed follow-up on leads':'followup', 'Writing quotes and proposals':'proposals', 'Creating marketing content':'content',
+    'Answering the same questions again and again':'documents', 'Slow replies to customer requests':'followup', 'Making sense of reviews and feedback':'analysis',
+    'Chasing documents and information':'documents', 'Scheduling and coordination':'workflow', 'Handoffs and status updates':'workflow',
+    'Inconsistent quality of work':'quality', 'Invoicing and chasing payments':'workflow', 'Data entry and sorting documents':'documents',
+    'Fixing mistakes and rework':'quality', 'Monthly reporting':'analysis', 'Finding information and files':'documents',
+    'Training new staff':'documents', 'Know-how stuck in one person’s head':'documents', 'Pulling numbers together for decisions':'analysis',
+    'Not knowing which numbers matter':'analysis', 'Comparing options and planning':'analysis'
+  };
+  function profileKey(d) { return d.problem === OTHER ? (PROFILES[d.othercategory] ? d.othercategory : 'other') : (PROFILE_MAP[d.problem] || 'other'); }
+  function valueModel(d) {
+    const key = profileKey(d), g = GOALS[d.goal];
+    if (key === 'prospecting' && d.goal === 'grow') return { model:'leads', q1:'Additional qualified leads per month (scenario)',q2:'Estimated revenue per new customer ($)',q3:'Expected lead-to-customer conversion rate (%)', hint:'Potential new revenue, not profit. Use a conversion rate from your records; otherwise this is only a hypothetical scenario.' };
+    if (key === 'conversion' && d.goal === 'grow') return { model:'conversion',q1:'Qualified prospects per month',q2:'Average revenue per new customer ($)',q3:'Possible improvement in conversion rate (percentage points)',hint:'Incremental revenue from a hypothetical increase in conversion rate. Enter percentage points, not a relative percent.' };
+    if (key === 'followup' && d.goal === 'grow') return { model:'missed',q1:'Leads missed or not followed up per month',q2:'Average revenue per new customer ($)',q3:'Possible percentage recovered (%)',hint:'This assumes recovered leads become customers; in practice, apply your actual conversion rate. Treat this as an upper-bound scenario.' };
+    if (d.goal === 'grow') return {model:'generalrevenue',q1:'Additional customers per month (scenario)',q2:'Average revenue per customer ($)',q3:'Possible share of target achieved (%)',hint:'An illustrative growth target, not a prediction or proof that this task generates sales.'};
+    return {model:'base',q1:g.q1,q2:g.q2,q3:'Illustrative improvement scenario',hint:'Based on your own estimates. This is a scenario, not a forecast.'};
+  }
   function evaluate(d) {
-    const g = GOALS[d.goal], a = AREAS[d.area];
-    if (!g || !a || !d.problem) return null;
-    const pr = d.problem === OTHER ? (d.other || 'Another problem') : d.problem;
-    const idea = d.problem === OTHER ? 'AI could find, draft, sort or summarize the work, with a person checking' : (a.p.find(x => x[0] === d.problem) || [])[1];
-    const n1 = Number(d.w1), n2 = Number(d.w2), imp = Number(d.imp) || 25;
-    const hasVal = n1 > 0 && n2 > 0;
-    const yearly = hasVal ? n1 * n2 * g.per : 0, value = yearly * imp / 100;
-    const sc = { yes: 2, unsure: 1, no: 0 };
-    const answered = ['f1', 'f2', 'f3'].every(k => d[k]);
-    const score = ['f1', 'f2', 'f3'].reduce((s, k) => s + (sc[d[k]] ?? 0), 0);
-    let fit = null;
-    if (answered) fit = d.f1 === 'no' || score <= 2 ? 'simpler' : score === 6 ? 'strong' : 'possible';
-    return { g, a, pr, idea, n1, n2, imp, hasVal, yearly, value, fit, goal: d.goal, area: d.area, math: hasVal ? g.unit(d.w1, n2) : '', src: { ...d } };
+    const g=GOALS[d.goal], a=AREAS[d.area]; if (!g || !a || !d.problem) return null;
+    const pr=d.problem===OTHER?(d.other||'Unspecified problem'):d.problem;
+    const key=profileKey(d), profile=PROFILES[key], vm=valueModel(d);
+    const n1=Number(d.w1),n2=Number(d.w2),n3=Number(d.imp);
+    const hasVal=d.w1!==''&&d.w2!==''&&d.imp!==''&&n1>=0&&n2>=0&&n3>=0&&n1>0&&n2>0;
+    let yearly=0,value=0,math='',basis='';
+    if(hasVal){
+      if(vm.model==='leads'){yearly=n1*n2*12;value=yearly*n3/100;math=`${n1} additional leads/month × ${money(n2)} × ${n3}% conversion × 12 months`;basis='Hypothetical additional revenue (not profit)';}
+      else if(vm.model==='conversion'){yearly=n1*n2*12;value=yearly*n3/100;math=`${n1} qualified prospects/month × ${n3} percentage-point conversion lift × ${money(n2)} × 12 months`;basis='Hypothetical incremental revenue (not profit)';}
+      else if(vm.model==='missed'){yearly=n1*n2*12;value=yearly*n3/100;math=`${n1} missed leads/month × ${money(n2)} × ${n3}% assumed recovery × 12 months`;basis='Optimistic upper-bound revenue; actual conversion may lower it';}
+      else if(vm.model==='generalrevenue'){yearly=n1*n2*12;value=yearly*n3/100;math=`${n1} additional customers/month × ${money(n2)} × ${n3}% target achievement × 12 months`;basis='Hypothetical revenue target, not attributable to AI';}
+      else{yearly=n1*n2*g.per;value=yearly*n3/100;math=`${n1} × ${money(n2)} × ${g.per} periods × ${n3}% improvement`;basis=g.kind==='staff time'?'Estimated capacity value, not cash savings':'Estimated avoided rework cost';}
+    }
+    const answered=['f1','f2','f3'].every(k=>d[k]);
+    let fit=null,reason='',check=profile.check;
+    if(answered){
+      if(d.f2==='yes'){fit='tools';reason='Your existing business tools may already handle this work. Check, configure and fully use those features before adding AI.';}
+      else if(d.f1==='no'||(profile.task==='automation'&&d.f1!=='yes')){fit='simpler';reason='This work appears to follow fixed, predictable steps. Ordinary automation, templates or checklists are likely a better starting point than AI.';}
+      else if(d.f3==='no'){fit='review';reason='The information needed for a reliable test is not yet available digitally. Prepare or capture it first.';}
+      else if(d.f1==='yes'&&d.f2==='no'&&d.f3==='yes'&&profile.task==='unknown'){fit='possible';reason='Your answers are encouraging, but the problem needs a clearer step-by-step description before choosing AI over simpler changes.';}
+      else if(d.f1==='yes'&&d.f2==='no'&&d.f3==='yes'){fit='strong';reason=profile.task==='automation'?'The work needs interpretation or tailored responses, existing tools do not cover it, and digital inputs are available. Use ordinary automation for the routine steps and test supervised AI on the parts that need judgment.':'The task involves interpreting information, existing tools do not fully address it, and digital inputs are available. Compare a supervised AI pilot with simpler alternatives.';}
+      else{fit='possible';reason='One or more answers is "Not sure", so it is not yet clear whether AI improves on existing tools or simpler changes. Confirm the workflow, your current tools and the available information.';}
+    }
+    return {g,a,pr,idea:profile.ai,profile,key,vm,n1,n2,imp:n3,hasVal,yearly,value,fit,reason,check,task:profile.task,goal:d.goal,area:d.area,math,basis,src:{...d}};
   }
   const FITTXT = {
-    strong: ['Strong AI fit', 'v-strong', 'Good candidate for a small AI test.'],
-    possible: ['Possible AI fit', 'v-possible', 'Worth a test, but check the information and the review step first.'],
-    simpler: ['Try a simpler fix first', 'v-simpler', 'A clearer process, a template or software you already have may solve this before AI.']
+    strong:['Promising AI candidate','v-strong','Run a small supervised test and compare alternatives.'],
+    possible:['Further assessment needed','v-possible','Validate the workflow and compare options.'],
+    tools:['Use existing tools first','v-simpler','Get more from the software you already have before adding AI.'],
+    simpler:['Check automation first','v-simpler','Try ordinary automation and process improvements first.'],
+    review:['Prepare digital information first','v-simpler','Address data readiness before a pilot.']
   };
-  const FITW = { strong: 1, possible: 0.6, simpler: 0.3 };
-  const testOf = (o) => `Week 1: measure today’s number (${o.g.kind === 'revenue' ? 'missed sales' : o.g.kind === 'cost of mistakes' ? 'mistakes and fix time' : 'hours spent'}). Week 2: ${o.idea.charAt(0).toLowerCase() + o.idea.slice(1)}, with a person checking every result. Compare the two weeks.`;
+  function testOf(o){return o.profile.pilot;}
 
   let shortlist = [];
   let current = null;
@@ -442,21 +487,24 @@ const BOOK_URL = 'https://calendar.app.google/iVMhrh3wYaQJajhU8';
     c.append(el('div', 'area-tag', o.a.t));
     c.append(el('h3', '', o.pr));
     const nums = el('div', 'nums');
-    const n1 = el('div'); n1.append(el('b', '', 'Costs you a year (' + o.g.kind + ')'), el('span', '', o.hasVal ? money(o.yearly) : '—'));
-    const n2 = el('div'); n2.append(el('b', '', `Worth improving by ${o.imp}%`), el('span', '', o.hasVal ? money(o.value) : '—'));
+    const BASE_LBL = { leads: 'Revenue if every lead converted (ceiling)', conversion: 'Revenue if every prospect converted (ceiling)', missed: 'Revenue if every missed lead converted (ceiling)', generalrevenue: 'Full growth target (scenario)' };
+    const n1 = el('div'); n1.append(el('b', '', BASE_LBL[o.vm.model] || 'What the problem costs a year today (estimate)'), el('span', '', o.hasVal ? money(o.yearly) : '—'));
+    const n2 = el('div'); n2.append(el('b', '', 'Illustrative annual impact'), el('span', '', o.hasVal ? money(o.value) : '—'));
     nums.append(n1, n2); c.append(nums);
-    if (o.hasVal) { const p = el('p'); p.append(el('b', '', 'The math: '), document.createTextNode(`${o.math} = ${money(o.yearly)} a year. Improving it by ${o.imp}% is worth about ${money(o.value)} a year.`)); c.append(p); }
+    if (o.hasVal) { const p = el('p'); p.append(el('b', '', 'The math: '), document.createTextNode(`${o.math} = ${money(o.value)} a year. ${o.basis}.`)); c.append(p); }
     else c.append(el('p', '', 'Add two numbers in step 5 to see what it is worth.'));
-    const pf = el('p'); pf.append(el('b', '', 'AI fit: '));
+    const pf = el('p'); pf.append(el('b', '', 'Preliminary recommendation: '));
     if (o.fit) { const v = el('span', 'verdict ' + FITTXT[o.fit][1], FITTXT[o.fit][0]); pf.append(v, document.createTextNode(' ' + FITTXT[o.fit][2])); }
     else pf.append(document.createTextNode('Answer the three checks in step 6.'));
     c.append(pf);
-    const pi = el('p'); pi.append(el('b', '', 'What AI could do: '), document.createTextNode(o.idea + '.')); c.append(pi);
+    if (o.fit) { const why = el('p'); why.append(el('b', '', 'Why: '), document.createTextNode(o.reason)); c.append(why); const ck = el('p'); ck.append(el('b', '', 'Check first: '), document.createTextNode(o.check)); c.append(ck); }
+    const pa=el('p');pa.append(el('b','','Suggested approach: '),document.createTextNode(o.profile.approach+'.'));c.append(pa);const pw=el('p');pw.append(el('b','','Business reasoning: '),document.createTextNode(o.profile.why));c.append(pw);const ps=el('p');ps.append(el('b','','Simpler alternative: '),document.createTextNode(o.profile.simpler));c.append(ps);const pi = el('p'); pi.append(el('b', '', 'Where AI might help: '), document.createTextNode(o.idea + '.')); c.append(pi);const pm=el('p');pm.append(el('b','','What to measure: '),document.createTextNode(o.profile.metric));c.append(pm);
     const pt = el('p'); pt.append(el('b', '', 'Two-week test: '), document.createTextNode(testOf(o))); c.append(pt);
     return c;
   }
-  const rankKey = (o) => o.value * (FITW[o.fit] || 0.5);
-  const ranked = () => [...shortlist].sort((x, y) => rankKey(y) - rankKey(x));
+  const TIER = { strong: 0, possible: 1, review: 2, tools: 3, simpler: 3 };
+  const tier = (o) => o.fit ? TIER[o.fit] : 4;
+  const ranked = () => [...shortlist].sort((x, y) => (tier(x) - tier(y)) || (Number(y.hasVal)-Number(x.hasVal)) || (y.value-x.value));
 
   function renderShort() {
     $('shortwrap').hidden = !shortlist.length;
@@ -473,7 +521,7 @@ const BOOK_URL = 'https://calendar.app.google/iVMhrh3wYaQJajhU8';
     });
     $('add').disabled = shortlist.length >= 3 && !!current;
     if (shortlist.length >= 3) $('add').textContent = 'Shortlist full (3). Remove one to add another';
-    else $('add').textContent = shortlist.length ? 'Add to my shortlist and look at another problem' : 'Add to my shortlist and look at another problem';
+    else $('add').textContent = 'Add to my shortlist and look at another problem';
   }
 
   function refresh() {
@@ -481,12 +529,12 @@ const BOOK_URL = 'https://calendar.app.google/iVMhrh3wYaQJajhU8';
     const g = GOALS[d.goal];
     $('lock5').hidden = !!g; $('worth').hidden = !g;
     if (g) {
-      $('w1l').textContent = g.q1; $('w2l').textContent = g.q2; $('w1').placeholder = g.p1; $('w2').placeholder = g.p2;
+      const vm=d.area&&d.problem?valueModel(d):{model:'base',q1:g.q1,q2:g.q2,q3:'Illustrative improvement scenario',hint:'Choose a specific problem for tailored questions.'}; $('w1l').textContent=vm.q1;$('w2l').textContent=vm.q2;$('worthhint').textContent=vm.hint;$('w1').placeholder=g.p1;$('w2').placeholder=g.p2;const imp=$('imp');const oldMode=imp.dataset.mode||'';if(oldMode!==vm.model){imp.innerHTML=(vm.model==='leads'?'<option value="5">5% conversion</option><option value="10" selected>10% conversion</option><option value="20">20% conversion</option>':vm.model==='conversion'?'<option value="5">+5 percentage points</option><option value="10" selected>+10 percentage points</option><option value="20">+20 percentage points</option>':vm.model==='missed'?'<option value="10">10% recovered</option><option value="25" selected>25% recovered</option><option value="50">50% recovered</option>':vm.model==='generalrevenue'?'<option value="10">10% of target</option><option value="25" selected>25% of target</option><option value="50">50% of target</option>':'<option value="10">A little (10%)</option><option value="25" selected>Some (25%)</option><option value="50">A lot (50%)</option>');imp.dataset.mode=vm.model;}if(imp.dataset.pending){if([...imp.options].some(op=>op.value===imp.dataset.pending))imp.value=imp.dataset.pending;imp.dataset.pending='';}document.querySelector('label[for="imp"]').textContent=vm.q3;d.imp=imp.value;
     }
     $('otherbox').hidden = d.problem !== OTHER;
     const o = evaluate(d);
     const est = $('estimate');
-    if (o && o.hasVal) { est.textContent = `Costs about ${money(o.yearly)} a year. Improving it by ${o.imp}%: about ${money(o.value)} a year.`; const sm = el('small', '', o.math + '. ' + (o.g.kind === 'revenue' ? 'Revenue, not profit.' : o.g.kind === 'staff time' ? 'Staff time is capacity, not cash, until you use it.' : 'Includes the time to fix it.')); est.append(sm); }
+    if (o && o.hasVal) { est.textContent = `Illustrative annual impact: ${money(o.value)}.`; const sm=el('small','',o.math+'. '+o.basis+'. Not a forecast.'); est.append(sm); }
     else est.textContent = 'Your estimate appears here.';
     const isExample = !o && !shortlist.length;
     const show = o || (isExample ? evaluate(EXAMPLE) : null);
@@ -511,7 +559,7 @@ const BOOK_URL = 'https://calendar.app.google/iVMhrh3wYaQJajhU8';
     const list = isExample ? [evaluate(EXAMPLE)] : items();
     const who = isExample ? 'I run a small business.' :
       'I run ' + (d.bname && !/\(example\)/.test(d.bname) ? d.bname + ', a' : 'a') + ' ' + (d.industry ? d.industry.toLowerCase() + ' business' : 'small business') + (d.team ? ' with ' + d.team.toLowerCase() : '') + '.' + (GOALS[d.goal] ? ' My most important goal this year: ' + GOALS[d.goal].t.toLowerCase() + '.' : '');
-    const lines = list.filter(Boolean).map((o, i) => `${i + 1}. ${o.a.t}: ${o.pr}. ${o.hasVal ? 'My estimate: ' + o.math + ' = ' + money(o.yearly) + ' a year.' : 'Not estimated yet.'}${o.fit ? ' My AI-fit check: ' + FITTXT[o.fit][0].toLowerCase() + '.' : ''}`);
+    const lines=list.filter(Boolean).map((o,i)=>`${i+1}. ${o.a.t}: ${o.pr}. Suggested approach: ${o.profile.approach}. ${o.hasVal?'Illustrative scenario: '+o.math+' = '+money(o.value)+' a year; '+o.basis+'.':'Not estimated yet.'} Measure: ${o.profile.metric} Check: ${o.check}`);
     return [who, '', 'Problems I want to look at:', ...lines, '',
       'Act as a practical AI advisor for small businesses. Use my project files and records where available. Answer with exactly these sections, using tables:',
       '',
@@ -535,8 +583,8 @@ const BOOK_URL = 'https://calendar.app.google/iVMhrh3wYaQJajhU8';
   function resultsText() {
     const d = read(); const list = items();
     const head = [(d.bname || 'My business') + ': AI opportunities', [d.industry, d.team, GOALS[d.goal] ? 'Goal: ' + GOALS[d.goal].t : ''].filter(Boolean).join(' · ')];
-    const body = list.map((o, i) => `\n#${i + 1} ${o.a.t}: ${o.pr}\nWorth: ${o.hasVal ? money(o.value) + ' a year (improving ' + o.imp + '% of ' + money(o.yearly) + ')' : 'not estimated'}\nAI fit: ${o.fit ? FITTXT[o.fit][0] : 'not checked'}\nWhat AI could do: ${o.idea}.\nTwo-week test: ${testOf(o)}`);
-    return [...head.filter(Boolean), ...body, '', 'A rough estimate to test, not a forecast.', 'Free 15 minute AI Office Hours: ' + BOOK_URL].join('\n');
+    const body=list.map((o,i)=>`\n#${i+1} ${o.a.t}: ${o.pr}\nIllustrative impact: ${o.hasVal?money(o.value)+' a year; '+o.math+'; '+o.basis:'not estimated'}\nApproach: ${o.profile.approach}\nReasoning: ${o.profile.why}\nSimpler alternative: ${o.profile.simpler}\nAI role: ${o.idea}\nCheck: ${o.check}\nMetrics: ${o.profile.metric}\nTwo-week test: ${testOf(o)}`);
+    return [...head.filter(Boolean), ...body, '', 'A rough estimate to test, not a forecast.', 'Private AI Office Hours: ' + BOOK_URL].join('\n');
   }
   function makePdf() {
     const d = read(); const list = items();
@@ -560,16 +608,19 @@ const BOOK_URL = 'https://calendar.app.google/iVMhrh3wYaQJajhU8';
     const who = HOSTED ? [d.cname, d.cemail].filter(Boolean) : [];
     if (who.length) para('Prepared for: ' + who.join('   ·   '), 11, NAVY, 'bold', 4);
     para([d.industry, d.team, GOALS[d.goal] ? 'Goal: ' + GOALS[d.goal].t : ''].filter(Boolean).join('   ·   '), 10.5, GRAY, 'normal', 10);
-    list.forEach((o, i) => {
-      ensure(130);
-      doc.setDrawColor(212, 225, 230); doc.setLineWidth(0.8); doc.line(M, y - 4, W - M, y - 4); y += 12;
-      doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); doc.setTextColor(...GRAY); doc.text(o.a.t.toUpperCase(), M, y); y += 14;
-      doc.setFontSize(14); doc.setTextColor(...NAVY); doc.text(doc.splitTextToSize(`#${i + 1}  ${o.pr}`, CW - 150)[0], M, y);
-      doc.setTextColor(...TEAL); doc.text(o.hasVal ? money(o.value) + ' a year' : 'Not estimated', W - M, y, { align: 'right' }); y += 18;
-      if (o.hasVal) para(`The math: ${o.math} = ${money(o.yearly)} a year (${o.g.kind}). Improving it by ${o.imp}% is worth about ${money(o.value)} a year.`, 10, NAVY, 'normal', 3);
-      para('AI fit: ' + (o.fit ? FITTXT[o.fit][0] + '. ' + FITTXT[o.fit][2] : 'not checked'), 10, NAVY, 'normal', 3);
-      para('What AI could do: ' + o.idea + '.', 10, NAVY, 'normal', 3);
-      para('Two-week test: ' + testOf(o), 10, NAVY, 'normal', 12);
+    list.forEach((o,i)=>{
+      ensure(100);doc.setDrawColor(212,225,230);doc.line(M,y-4,W-M,y-4);y+=15;
+      para(`#${i+1}  ${o.a.t.toUpperCase()} - ${o.pr}`,14,NAVY,'bold',8);
+      para('Suggested approach: '+o.profile.approach,11,TEAL,'bold',6);
+      para('Business problem and reasoning: '+o.profile.why,10,NAVY,'normal',6);
+      para('Preliminary AI suitability: '+(o.fit?FITTXT[o.fit][0]+'. '+o.reason:'Not yet checked'),10,NAVY,'normal',6);
+      para('Where AI could help: '+o.idea+'.',10,NAVY,'normal',5);
+      para('Simpler alternative: '+o.profile.simpler,10,NAVY,'normal',5);
+      para('Validate first: '+o.check,10,NAVY,'normal',5);
+      para('Measure: '+o.profile.metric,10,NAVY,'normal',6);
+      para('Financial scenario: '+(o.hasVal?o.math+' = '+money(o.value)+' annually. '+o.basis+'.':'Not estimated: insufficient numbers.'),10,TEAL,'normal',6);
+      para('TWO-WEEK TEST',10,NAVY,'bold',4);
+      para(testOf(o),10,NAVY,'normal',16);
     });
     para('A rough estimate to test, not a forecast. Staff time saved is capacity, not cash, until you use it. Revenue is not profit.', 9, GRAY, 'italic', 14);
     ensure(60);
@@ -577,7 +628,7 @@ const BOOK_URL = 'https://calendar.app.google/iVMhrh3wYaQJajhU8';
     para('Paste this into a ChatGPT, Claude or Gemini project with your business files:', 10, GRAY, 'normal', 6);
     para(buildPrompt(d, false), 9, NAVY, 'normal', 14);
     ensure(50);
-    para('Free 15 minute AI Office Hours: ' + BOOK_URL, 10.5, TEAL, 'bold', 2);
+    para('Private AI Office Hours: ' + BOOK_URL, 10.5, TEAL, 'bold', 2);
     para('Qentro LLC  ·  qentrotech.com  ·  xyang@qentrotech.com', 9, GRAY, 'normal', 0);
     return { doc, name: 'Qentro_AI_Opportunities_' + (d.bname || 'My_Business').replace(/[^a-z0-9]+/gi, '_').slice(0, 40) + '.pdf' };
   }
@@ -585,7 +636,7 @@ const BOOK_URL = 'https://calendar.app.google/iVMhrh3wYaQJajhU8';
     const d = read(); const list = items();
     const p = { company: d.bname, industry: d.industry, team: d.team, name: d.cname || '', email: d.cemail || '', goal: GOALS[d.goal] ? GOALS[d.goal].t : '', website: '' };
     list.forEach((o, i) => { const k = 'top' + (i + 1); p[k] = o.a.t + ': ' + o.pr; p[k + '_value'] = o.hasVal ? Math.round(o.value) : ''; p[k + '_fit'] = o.fit ? FITTXT[o.fit][0] : ''; });
-    p.details = list.map((o, i) => `#${i + 1} ${o.a.t}: ${o.pr} | ${o.hasVal ? o.math + ' = ' + money(o.yearly) + ' a year; improve ' + o.imp + '% = ' + money(o.value) : 'not estimated'} | AI fit: ${o.fit ? FITTXT[o.fit][0] : 'not checked'}`).join('\n');
+    p.details=list.map((o,i)=>`#${i+1} ${o.a.t}: ${o.pr} | ${o.profile.approach} | ${o.hasVal?o.math+' = '+money(o.value)+' annual scenario':'not estimated'} | AI fit: ${o.fit?FITTXT[o.fit][0]:'not checked'} | Check: ${o.check}`).join('\n');
     return p;
   }
   let sentKey = '';
@@ -611,14 +662,19 @@ const BOOK_URL = 'https://calendar.app.google/iVMhrh3wYaQJajhU8';
     if (!e($('cemail').value.trim())) { setStatus('Check the email address in step 1, or leave it blank.', true); $('cemail').focus(); return; }
     try { const pdf = makePdf(); pdf.doc.save(pdf.name); setStatus('Your PDF is downloading.'); }
     catch (err) { setStatus('The PDF could not be created in this browser. Take a screenshot of your results instead.', true); }
-    send();
+  });
+  $('share').addEventListener('click', () => {
+    if (!items().length) { setStatus('Complete an opportunity first.', true); return; }
+    if (!ENDPOINT || ENDPOINT.startsWith('PASTE_')) { setStatus('Sharing is not configured on this copy. Your PDF remains available.', true); return; }
+    if (!confirm('Share your assessment and optional contact details with Qentro?')) return;
+    send(); setStatus('Sharing requested. Please note: this connection cannot confirm delivery.');
   });
   $('add').addEventListener('click', () => {
     if (!current || shortlist.length >= 3) return;
     shortlist.push(current); saveAll();
     // keep business, goal and value units; clear the problem-specific answers
     ['area', 'problem', 'f1', 'f2', 'f3'].forEach(n => document.querySelectorAll(`input[name="${n}"]`).forEach(x => x.checked = false));
-    ['other', 'w1'].forEach(i => $(i).value = ''); $('imp').value = '25';
+    ['other','othercategory','w1','w2'].forEach(i => $(i).value = ''); $('imp').dataset.mode='';
     renderProblems('', ''); refresh();
     $('h3x').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
   });
@@ -630,7 +686,7 @@ const BOOK_URL = 'https://calendar.app.google/iVMhrh3wYaQJajhU8';
   }
 
   document.addEventListener('change', (e) => {
-    if (e.target.name === 'area') { renderProblems(e.target.value, ''); }
+    if (e.target.name === 'area') { renderProblems(e.target.value, ''); ['w1','w2'].forEach(i=>$(i).value=''); $('imp').dataset.mode=''; } if(e.target.name==='problem'||e.target.name==='goal'||e.target.id==='othercategory'){['w1','w2'].forEach(i=>$(i).value='');$('imp').dataset.mode='';}
     if (e.target.matches('input, select')) { refresh(); saveAll(); }
   });
   document.addEventListener('input', (e) => { if (e.target.matches('input[type=text], input[type=number], input[type=email]')) { refresh(); saveAll(); } });
